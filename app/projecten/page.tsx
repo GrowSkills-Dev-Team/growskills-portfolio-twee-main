@@ -10,7 +10,7 @@ export default function Page(){
     useEffect(() => {
       
       gsap.to('.hero-title', {
-        duration: 0.5,
+        duration: 1.1,
         opacity: 1,
         scale: 1,
       });
