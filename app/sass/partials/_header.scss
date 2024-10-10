@@ -1,0 +1,170 @@
+header{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    padding: remToPx(20px) remToPx(30px) 0;
+    height: remToPx(60px);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: center;
+    opacity: 0;
+    transform: translateY(-150%);
+
+    @include breakpoint-desktop-small{
+        height: auto;
+    }    
+}
+
+.logo{
+    transition: all 0.3s ease-in-out;
+    display: block;
+    width: remToPx(50px);
+    height: remToPx(32px);
+    // background: url(../../../public/logo.svg) no-repeat 0 0;
+    // background-size: contain;
+    cursor: pointer;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  z-index: 200;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $color-clear-blue;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 34px;
+  span{
+    position: absolute;
+    width: 23px;
+    height: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    &.slider-play{
+        right: 10px;
+        background: url(../../../public/music-play.svg) no-repeat 0 0;
+        background-size: contain;
+    }
+    &.slider-pause{
+        left: 10px;
+        background: url(../../../public/music-stops.svg) no-repeat 0 0;
+        background-size: contain;
+    }
+  }
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 30px;
+  width: 30px;
+  left: 5px;
+  bottom: 5px;
+  background-color: $color-light-blue;
+  -webkit-transition: .4s;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(40px);
+  -ms-transform: translateX(40px);
+  transform: translateX(40px);
+}
+
+.sun{
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  .ray{
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    margin-top: 0;
+    height: 200vh;
+    width: 120px;
+    transform: rotate(40deg);
+    transform-origin: center top;
+    opacity: 100%;
+    img{
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+    &:nth-of-type(odd){
+      left: 48%;
+    }
+  }
+}
+
+.noise-displacement{
+  width: 0;
+  height: 0;
+}
+
+.coral-image{
+  pointer-events: none;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 50vw;
+  height: auto;
+  z-index: 100;
+  @include breakpoint-tablet {
+    width: 30vw;
+  }
+  img{
+    position: relative;
+    display: block;
+    width: 100%;
+    filter: url(#noise);
+  }
+  &.coral-right{
+    width: 70vw;
+    right: -2px;
+    left: auto;
+    transform: scaleX(-1);
+    @include breakpoint-tablet {
+      width: 40vw;
+    }
+  }
+}

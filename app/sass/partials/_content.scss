@@ -1,0 +1,502 @@
+.hero-title{
+  position: relative;
+  text-align: center;
+  z-index: 80;
+  opacity: 0;
+  scale: 0;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  margin: 150px 0 90px;
+  
+  @include breakpoint-desktop-small {
+    mix-blend-mode: overlay;
+    margin: 10vw 0;
+  }
+
+  &.margin-bottom-small{
+    margin-bottom: 40px;
+    @include breakpoint-desktop-small {
+      margin-bottom: 60px;
+    }
+  }
+  
+  &.hero-title-home{
+    margin-top: 60vw;
+    margin-bottom: 10vw;
+    @include breakpoint-mobile {
+      margin-top: 50vw;
+      margin-bottom: 20vw;
+    }
+    @include breakpoint(600px){
+      margin-top: 30vw;
+    }
+    @include breakpoint-tablet {
+      min-height: 100vh;
+      margin: 0;
+    }
+    h1{
+      margin-bottom: remToPx(30px);
+      @include breakpoint-tablet {
+        margin-bottom: remToPx(50px);
+      }
+    }
+  }
+  
+  &.hero-title-project{
+    justify-content: flex-end;  
+    max-width: 1500px;
+    margin: -20vw auto 20vw;
+    // mix-blend-mode: color-dodge;
+    @include breakpoint-tablet {
+      margin: -10vw auto 10vw;
+    }
+    @include breakpoint-desktop-medium {
+      margin: -1vw auto 4vw;
+    }
+  }
+
+  h1{
+    padding: 0 5%;
+  }
+}
+
+.text-columns{
+  h2{
+    color: $color-clear-blue;
+  }
+  p{
+    @include breakpoint-tablet {
+      text-align: left;
+    }
+  }
+}
+
+.text-columns-wrapper{
+  position: relative;
+  @include breakpoint-tablet {
+    @include grid-layout(12, 2rem, 2rem);
+  }
+}
+
+.text-columns-animate-text{
+  transform: translateY(200px);
+}
+
+.text-columns-animate, .text-columns-animate-text, .text-project-animate, .text-columns-animate-about{
+  .text-columns-title{
+    transform: translateX(-200px);
+    opacity: 0;
+    @include breakpoint-tablet {
+    }
+  }
+  .text-columns-text{
+    transform: translateX(200px);
+    opacity: 0;
+    @include breakpoint-tablet {
+    }
+  }
+}
+
+.text-columns-title{
+  position: relative;
+  @include breakpoint-tablet {
+    @include grid-column-span(6);
+  }
+  @include breakpoint-desktop-small {
+    @include grid-column-span(5);
+    @include grid-column-start(2)
+  }
+
+  span{
+    @include breakpoint-tablet {
+      display: block;
+    }
+  }
+
+  img{
+    display: none;
+    @include breakpoint-tablet {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      display: block;
+      width: 230px;
+      aspect-ratio: 1 / 1;
+      border-radius: 50%;
+      // mix-blend-mode: luminosity;
+      .cta-contact &{
+        bottom: auto;
+        top: 20%;
+      }
+    }
+  }
+}
+
+.text-columns-text{
+  max-width: 390px;
+  margin: 0 auto;
+  @include breakpoint-tablet {
+    @include grid-column-span(6);
+    padding-top: remToPx(81px);
+    max-width: none;
+  }
+  @include breakpoint-desktop-small {
+    @include grid-column-span(4);
+    padding-top: remToPx(100px);
+  }
+  .btn-center{
+    @include breakpoint-tablet {
+      text-align: left;
+    }
+  }
+  h4{
+    @include breakpoint-tablet {
+      text-align: left;
+    }
+  }
+  .cta &{
+    @include breakpoint-tablet {
+      margin: 0;
+      max-width: 390px;
+    }
+  }
+}
+
+.text-columns-text-whatsapp{
+  margin-bottom: 34px;
+  @include breakpoint-tablet {
+    max-width: 350px;
+  }
+  input[type=text]{
+    width: 100%;
+    margin-bottom: 12px;
+    border-radius: 10px;
+  }
+  a.whatsAppCta{
+    display: block;
+    width: 100%;
+    background: #25D366;
+    padding: remToPx(18px) remToPx(30px) remToPx(20px);
+    &:hover{
+      color: $color-white;
+      background: darken(#25d366, 5%);
+    }
+    &:after{
+      content: '';
+      position: absolute;
+      top: calc(50% - 15px);
+      right: 20px;
+      width: 30px;
+      height: 30px;
+      background: url(../../../public/whatsapp-cta.svg) no-repeat center center;
+      background-size: 100% 100%;
+    }
+  }
+}
+
+.text-columns-text-contact{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  img{
+    display: block;
+    width: 100px;
+    height: 100px;
+    border-radius: 100%;
+    mix-blend-mode: luminosity;
+    @include breakpoint-tablet {
+      display: none;
+    }
+  }
+}
+
+.text-columns-text-contact-text{
+  width: calc(100% - 120px);
+  h4{
+    font-size: 20px;
+    margin-bottom: 3px;
+  }
+  h4, p{
+    text-align: left;
+  }
+}
+
+.project-overview{
+  position: relative;
+  z-index: 20;
+  .wrapper{
+    @include grid-layout(1);
+  }
+}
+
+.project-overview-item{
+  position: relative;
+  display: block;
+  cursor: pointer;
+  width: 90%;
+  height: 300px;
+  margin-bottom: 120px;
+  @include breakpoint-tablet {
+    width: 60%;
+    margin-left: 0;
+    height: auto;
+    aspect-ratio: 14 / 9;
+  }
+  @include breakpoint-desktop-medium {
+    aspect-ratio: 15 / 9;
+  }
+  + .project-overview-item{
+    margin-top: 50px;
+    @include breakpoint-desktop-medium {
+      margin-top: 150px;
+    }
+  }
+}
+
+.project-overview-item-image{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  clip-path: url(#svgPath);
+  transform: translateY(200px);
+  opacity: 0;
+  .project-overview-item-image-gradient{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50%;
+    background: rgb(4,13,48);
+    background: linear-gradient(0deg, rgba(4,13,48,1) 0%, rgba(4,13,48,0) 100%);
+  }
+  
+}
+
+.project-overview-item-image img{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.project-overview-item-title{
+  position: absolute;
+  bottom: -120px;
+  width: 70%;
+  left: 0;
+  @include breakpoint-tablet {
+    left: 90%;
+    bottom: 0;
+  }
+}
+
+.project-overview-item-title h3{
+  color: $color-purple;
+  font-size: 10vw;
+  color: $color-clear-blue;
+  text-align: left;
+  @include breakpoint-tablet {
+    font-size: 6vw;
+    margin-bottom: 20px;
+  }
+}
+
+.svgclipWrap__clippath {
+  width: 0;
+  height: 0;
+}
+
+.project-detail{
+  position: relative;
+  min-height: 100dvh;
+}
+
+.hero-image-project-detail{
+  position: relative;
+  width: calc(100% + 50px);
+  height: calc(100dvh + 50px);
+  margin-left: -25px;
+  margin-top: -25px;
+  z-index: 35;
+}
+
+.hero-image-project-detail-gradient{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 70%;
+    background: rgb(0,6,41);
+    background: linear-gradient(0deg, rgba(0,6,41,1) 0%, rgba(0,6,41,1) 10%, rgba(0,6,41,0) 100%);
+    opacity: 0;
+    transform: translateY(200px);
+}
+
+.project-item{
+  margin-top: 0;
+}
+
+.project-detail-image{
+  mix-blend-mode: lighten;
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+  img{
+    width: 100%;
+    height: auto;
+  }
+}
+
+.project-detail-images{
+  > img{
+    width: 100%;
+    height: auto;
+  }
+}
+
+.hero-text{
+  width: 90%;
+  max-width: 660px;
+  margin: 0 auto;
+  opacity: 0;
+  scale: 0;
+  p{
+    text-align: center;
+  }
+}
+
+.team{
+  margin-top: 0;
+  opacity: 0;
+  transform: translateY(300px);
+  h1{
+    color: $color-clear-blue;
+  }
+}
+
+.team-overview{
+  @include breakpoint-tablet {
+    width: 80vw;
+    max-width: 1120px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+  }
+}
+
+.team-overview-member{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+  @include breakpoint-tablet {
+    width: calc(50% - 20px);
+  }
+  @include breakpoint-desktop-small {
+    width: 30%;
+  }
+}
+
+.team-overview-member-image{
+  position: relative;
+  // mix-blend-mode: luminosity;
+  img{
+    display: block;
+  }
+}
+
+.team-overview-member-name{
+  position: absolute;
+  bottom: remToPx(50px);
+  right: 0;
+  @include breakpoint-tablet {
+    bottom: remToPx(20px);
+  }
+  h3{
+    font-size: remToPx(38px);
+    margin-bottom: 5px;
+    text-align: left;
+  }
+  p{
+    font-size: remToPx(22px);
+    line-height: 1;
+    margin-bottom: 0;
+  }
+}
+
+.cta{
+  transform: translateY(300px);
+  opacity: 0;
+}
+
+.cta-contact{
+  margin-top: 0;
+}
+
+.dolphin{
+  display: none;
+  @include breakpoint-desktop-small {
+    animation: dolphin 3s ease-in-out 0s infinite alternate;
+    display: block;
+    position: fixed;
+    top: 30dvh;
+    right: -100px;
+    width: 495px;
+    height: auto;
+    pointer-events: none;
+    mix-blend-mode: lighten;
+    transform: rotate(-5deg);
+    z-index: 90;
+    @include breakpoint-desktop-large {
+      top: 40dvh;
+    }
+    img{
+      display: block;
+    }
+  }
+}
+
+@keyframes dolphin {
+  from{
+    transform: rotate(-5deg);
+  }
+  to{
+    transform: rotate(-10deg);
+  }
+}
+
+.noise {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, transparent), url(../../../public/noise.svg);
+  filter: contrast(180%) brightness(100%);  
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  opacity: 60%;
+}
+
+.snail{
+  position: absolute;
+  top: -60px;
+  left: calc(50% - 300px);
+  width: 150px;
+  height: auto;
+  z-index: 100;
+  display: none;
+  @include breakpoint-tablet {
+    display: block;
+  }
+  img{
+    display: block;
+    width: 100%;
+  }
+}

@@ -1,0 +1,134 @@
+h1, h2, h3, h4{
+    font-family: $font-family-title;
+    line-height: 1;
+    font-weight: 400;
+    color: $color-white;
+    text-align: center;
+}
+
+h2, h3, h4{
+    margin-bottom: remToPx(10px);
+}
+
+h1{
+    color: $color-clear-blue;
+    font-size: 14vw;
+    margin-bottom: 0;
+    @include breakpoint-desktop-small {
+        color: $color-white;
+        font-size: 12vw;
+    }
+    @include breakpoint-desktop-medium {
+        font-size: 9vw;
+    }
+}
+
+h2{
+    font-size: 10vw;
+    margin-bottom: remToPx(20px);
+    @include breakpoint-tablet {
+        font-size: remToPx(55px);
+        text-align: right;
+    }
+    @include breakpoint-desktop-medium {
+        font-size: remToPx(64px);
+    }
+    @include breakpoint-desktop-large {
+        font-size: remToPx(80px);
+    }
+}
+
+h3{
+    font-size: remToPx(40px); 
+    @include breakpoint-tablet {
+        font-size: remToPx(60px);
+        margin-bottom: 30px;
+    }
+    @include breakpoint-desktop-small {
+        font-size: remToPx(80px);
+        margin-bottom: 40px;
+    }
+}
+
+h4{
+    font-size: remToPx(22px);
+}
+
+b, strong {
+    font-weight: 700;
+}
+
+em {
+    font-style: italic;
+}
+
+.text-container {
+    p, ul, ol,
+    blockquote,
+    .embed-container,
+    .wp-caption {
+        font-size: remToPx(18px);
+        line-height: remToPx(28px);
+        margin-bottom: remToPx(28px);
+        max-width: 100%;
+        text-align: center;
+        @include breakpoint-desktop-small {
+            text-align: left;
+            font-size: remToPx(20px);
+        }
+
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+
+    ul, ol {
+        position: relative;
+        list-style: none;
+
+        li:not(.gfield) {
+            padding-left: 1.25em;
+
+            &::before {
+                position: absolute;
+                text-indent: -1.25em;
+            }
+        }
+    }
+
+    ul {
+        li:not(.gfield) {
+            &::before {
+                content: '•';
+            }
+        }
+    }
+
+    ol {
+        counter-reset: ol-counter;
+
+        li {
+            counter-increment: ol-counter;
+
+            &::before {
+                content: counter(ol-counter) '.';
+            }
+        }
+    }
+
+    a{
+        &:not(.btn){
+            &:hover{
+                color: $color-black;
+            }    
+        }
+        
+    }
+
+    blockquote {
+        padding-left: 1em;
+        font-size: 1.4em;
+        line-height: 1.2;
+        border-left: .1rem solid currentColor;
+    }
+}

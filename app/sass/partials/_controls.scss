@@ -1,0 +1,226 @@
+%control-properties {
+    transition: padding 0.3s ease-in-out;
+    position: relative;
+    font-family: $font-family-title;
+    font-size: remToPx(18px);
+    display: inline-block;
+    color: $color-white;
+    padding: remToPx(9px) remToPx(30px) remToPx(11px);
+    text-decoration: none;
+    border-radius: 50px;
+    line-height: 1;
+    background: $color-clear-blue;
+    border: medium none;
+    overflow: hidden;
+    // background: linear-gradient(124deg, rgba(13,32,180,1) 0%, rgba(25,38,139,1) 100%);
+    @include breakpoint-desktop-small {
+        font-size: remToPx(22px);
+    }
+}
+
+%focus-properties {
+    color: $color-clear-blue;
+    background: $color-white;
+    .btn-wave{
+        top: -200%;
+        height: 300%;
+    }
+}
+
+.btn-center{
+    text-align: center;
+    width: 100%;
+}
+
+.btn {
+    transition: all 0.2s ease-in-out;
+    @extend %control-properties;
+    &:hover{
+        @extend %focus-properties;
+    }
+}
+
+.btn-secondary{
+    position: relative;
+    font-family: $font-family-title;
+    font-size: remToPx(18px);
+    margin-left: remToPx(20px);
+    color: $color-white;
+    @include breakpoint-desktop-small {
+        font-size: remToPx(22px);
+    }
+    &:before{
+        transition: all 0.3s ease-in-out;
+        content: '';
+        position: absolute;
+        bottom: -5px;
+        right: 0;
+        width: 100%;
+        height: 2px;
+        background-color: $color-white;
+    }
+}
+
+.btn-text{
+    position: relative;
+}
+
+.btn-wave {
+    transition: all 0.2s ease-in-out;
+    position: absolute;
+    height: 180%;
+    width: 110%;
+    left: -5%;
+    top: -50%;
+    background: #327EFC;
+	animation: animate 4s ease-in-out infinite;
+}
+
+.btn.whatsapp{
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #25d366;
+    padding-right: 50px;
+    padding-left: 20px;
+    z-index: 100;
+    border: medium none;
+    @include breakpoint-tablet {
+        padding: remToPx(17px) remToPx(60px) remToPx(19px) remToPx(30px);
+    }
+    @include breakpoint-desktop-small {
+        padding-right: remToPx(70px);
+    }
+    &:hover{
+        color: $color-white;
+        background: darken(#25d366, 5%);
+    }
+    &:before{
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        right: 14px;
+        width: 24px;
+        height: 24px;
+        background: url(../../../public/whatsapp-cta.svg) no-repeat center center;
+        background-size: 100% 100%;
+        @include breakpoint-desktop-small {
+            width: 30px;
+            height: 30px;
+            // top: 14px;
+        }
+    }
+}
+
+@keyframes animate {
+	0%,
+	100% {
+		clip-path: polygon(
+			0% 45%,
+			16% 44%,
+			33% 50%,
+			54% 60%,
+			70% 61%,
+			84% 59%,
+			100% 52%,
+			100% 100%,
+			0% 100%
+		);
+	}
+
+	50% {
+		clip-path: polygon(
+			0% 60%,
+			15% 65%,
+			34% 66%,
+			51% 62%,
+			67% 50%,
+			84% 45%,
+			100% 46%,
+			100% 100%,
+			0% 100%
+		);
+	}
+}
+
+input[type=text]{
+    background: $color-white;
+    height: remToPx(60px);
+    padding: remToPx(20px) remToPx(30px) remToPx(20px);
+    border-radius: remToPx(22px);
+    color: $color-black;
+    margin-bottom: 35px;
+    font-size: remToPx(18px);
+    @include placeholder{
+        color: rgba($color-black, 0.3);
+        font-weight: 400;
+    }
+}
+
+form{
+    position: relative;
+    max-width: remToPx(700px);
+    input[type=text]{
+        background: $color-white;
+        height: remToPx(60px);
+        padding: remToPx(20px) remToPx(30px);
+        border-radius: remToPx(30px);
+        @include placeholder{
+            color: rgba($color-black, 0.6);
+            font-weight: 400;
+        }
+    }
+    input[type=submit]{
+        position: absolute;
+        top: 0;
+        right: 0;
+        background: $color-black;
+        height: remToPx(60px);
+        border-radius: remToPx(30px);
+        color: $color-white;
+        font-weight: 800;
+        padding: 0 remToPx(30px);
+        text-transform: uppercase;
+        &:hover{
+            cursor: pointer;
+        }
+    }
+}
+
+#site-container .gform_wrapper {
+    .gchoice{
+        padding-left: 30px;
+        label{
+            position: relative;
+            &::before{
+                content: '';
+                position: absolute;
+                width: 20px;
+                height: 20px;
+                background: $color-white;
+                border: 1px solid $color-black;
+                top: 1px;
+                left: -30px;
+            }
+        }
+    }
+
+    input[type=checkbox], input[type=radio] {
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+    
+        &:checked + label::before {
+            background: $color-black;
+        }
+    }
+
+    input[type=radio] {
+        + label{
+            &::before{
+                border-radius: 100%;
+            }
+        }
+    }
+}

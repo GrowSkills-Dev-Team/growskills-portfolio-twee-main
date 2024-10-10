@@ -1,0 +1,30 @@
+{
+  "name": "growskills-portfolio",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@vercel/speed-insights": "^1.0.10",
+    "cors": "^2.8.5",
+    "gsap": "^3.12.5",
+    "next": "^14.1.4",
+    "next-router-mock": "^0.9.13",
+    "nextjs-cors": "^2.2.0",
+    "react": "^18",
+    "react-dom": "^18",
+    "scrolltrigger": "^1.0.1",
+    "swr": "^2.2.5"
+  },
+  "devDependencies": {
+    "@types/node": "20.14.5",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "^18",
+    "sass": "^1.72.0",
+    "typescript": "5.4.5"
+  }
+}
